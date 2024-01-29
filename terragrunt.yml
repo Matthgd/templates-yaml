@@ -1,0 +1,14 @@
+steps:
+- task: Bash@3
+  displayName: Installing Terraform and Terragrunt
+  inputs:
+    targetType: inline
+    script: |
+      wget https://releases.hashicorp.com/terraform/1.5.4/terraform_1.5.4_linux_amd64.zip
+      unzip terraform*.zip
+      sudo mv terraform /usr/local/bin
+      wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.37.1/terragrunt_linux_amd64
+      mv ./terragrunt_linux_amd64 ./terragrunt
+      chmod +x ./terragrunt
+      sudo mv terragrunt /usr/local/bin
+      terraform --version
